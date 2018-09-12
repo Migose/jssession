@@ -15,6 +15,7 @@ const lower = document.getElementById('lower')
 upper_boxes[0].onclick = function(event){
     upper.style.background = event.target.style.background
     // message = evaluate[]
+
 }
 lower_boxes[0].onclick = function(event){
     lower.style.background = event.target.style.background
