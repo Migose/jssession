@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .test{
+            background: red;
+        }
+        .red {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" @input="changeTitle">
+        <p>{{title}}</p>
+
+        <input type="text" v-model="title2">
+        <p>{{title2}}</p>
+
+        <button @click="increase">클릭!</button>
+        <p>{{counter}}</p>
+
+
+        <p>{{sayHello()}}</p>
+
+        <div  v-vindclass="{red: attachRed}" @click="attachRed != attachRed" style="width:50px; height:50px; background:blue;"></div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Hello World',
+                title2: "",
+                counter: 0,
+                attachRed: false
+            },
+            methods: {
+                changeTitle: function(event){
+                    this.title = event.target.value
+                },
+                increase: function(){
+                    this.counter += 1
+                },
+                sayHello: function(){
+                    return 'Hello'
+                }
+
+            }
+        })
+
+        
+    </script>
+</body>
+</html>
