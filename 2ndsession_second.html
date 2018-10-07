@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background: gray;
+            display: inline-block;
+            margin: 10px
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="demo" :style="{backgroundColor: color, width: width+'px', margin: margin+'px'}"></div>
+        <div class="demo" :style="{backgroundColor: color, width: width+'px', margin: margin+'px'}"></div>
+        <div class="demo" :style="{backgroundColor: color, width: width+'px', margin: margin+'px'}"></div>
+
+        <hr>
+
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+        <input type="text" v-model="margin">
+
+        <div>보인다</div>
+        <div v-if="show">
+            <div>
+                hey there
+            </div>
+        </div>
+        <div v-else>else</div>
+        <button @click="show = !show">클릭</button>
+        
+        <div v-for="ingredient in ingredients" style="color: blue;">
+            {{ingredient}}
+
+        </div>
+
+        <div v-for="person in persons">
+            <div>이름:{{person.name}}</div>
+            <div>나이:{{person.age}}</div>
+            <div>제일 좋아하는 색:{{computedColor(person.favoriteColor)}}</div>
+            <div class="demo" :style="{backgroundColor: person.favoriteColor}"></div>
+        </div>
+
+    </div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            color: 'black',
+            width: 100,
+            show: true,
+            margin: 0,
+            ingredients: ['milk', 'apple', 'meat', 'corn'],
+            persons: [
+                {name: 'John', age: 20, favoriteColor: 'red'},
+                {name: 'Jake', age: 24, favoriteColor: 'blue'},
+                {name: 'Sally', age: 22, favoriteColor: 'pink'}
+
+            ]
+            
+        },
+        methods: {
+            computedColor: function(color){
+                if (color == 'red') {
+                    return '빨강색'
+                } else if (color =='blue') {
+                    return '파란색'
+                } else if (color == 'pink') {
+                    return '핑크색'
+                }
+
+            }
+                
+        },
+        created: function () {
+            console.log('생성됨')
+            
+        },
+        mounted: function(){
+            
+        }
+
+    }
+    )
+</script>
+</body>
+</html>
